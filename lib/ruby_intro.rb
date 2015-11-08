@@ -4,9 +4,9 @@
 
 def sum arr
   sum = 0
-  arr.each { |elem|
+  arr.each do |elem|
     sum += elem
-  }
+  end
   sum
 end
 
@@ -22,7 +22,7 @@ def sum_to_n? arr, n
   return n == 0 ? true : false if arr.empty?
   return false if arr.length == 1
   arr.combination(2) do |a,b|
-    return true if (a+b) == n
+    return true if a+b == n
   end
   return false
 end
@@ -30,15 +30,22 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, " + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  return false if s.empty?
+  return false if !s.match(/^[a-zA-Z]/)
+  return false if s.match(/^[aAeEiIoOuU]/)
+  return true
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  return false if s.empty?
+  s.each_char do |c|
+    return false if c != '0' &&  c != '1'
+  end
+  return (s.to_i(2) % 4 == 0)
 end
 
 # Part 3
